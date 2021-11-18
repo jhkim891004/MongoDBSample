@@ -34,4 +34,9 @@ public class ItemsController {
 	public void modifyItems(@RequestBody @Valid ItemsModifyDto dto) {
 		itemsService.modifyItems(dto);
 	}
+
+	@DeleteMapping("/api/v1/items/{id}")
+	public void removeItems(@PathVariable Long id) {
+		itemsService.removeItems(id);
+	}
 }

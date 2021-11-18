@@ -1,7 +1,6 @@
 package com.sample.mongodb.api.service.items;
 
 import com.sample.mongodb.api.repository.items.ItemsRepository;
-import com.sample.mongodb.config.exception.BusinessException;
 import com.sample.mongodb.model.document.items.Items;
 import com.sample.mongodb.model.dto.items.ItemsModifyDto;
 import com.sample.mongodb.model.dto.items.ItemsResponseDto;
@@ -57,5 +56,13 @@ public class ItemsService {
 		Items document = itemsRepository.findItemsByCode(dto.getCode());
 		document.update(dto.getName(), dto.getDescription(), dto.getClassifies());
 		itemsRepository.save(document);
+	}
+
+	@Transactional
+	public void removeItems(Long id) {
+		Items document = itemsRepository.findById(id)
+				.orElseThrow(NoSuchElementException::new);
+
+		itemsRepository.delete(document);
 	}
 }
