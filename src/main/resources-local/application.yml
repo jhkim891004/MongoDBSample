@@ -14,3 +14,8 @@ spring:
   data:
     mongodb:
       uri: mongodb://cndfactory:1234@127.0.0.1:27017/sample
+
+# logging
+logging:
+  file:
+    path: C:/dev/logs
