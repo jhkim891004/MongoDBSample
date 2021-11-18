@@ -1,0 +1,16 @@
+# server setting
+server:
+  port: 8080
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+# spring setting
+spring:
+  profiles:
+    active: local
+  data:
+    mongodb:
+      uri: mongodb://cndfactory:1234@127.0.0.1:27017/sample
