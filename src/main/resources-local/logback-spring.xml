@@ -24,9 +24,9 @@
 
 	<!-- FILE -->
 	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${filePath}/shopping_mall.log</file>
+		<file>${filePath}/mongodb.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>${filePath}/shopping_mall_%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+			<fileNamePattern>${filePath}/mongodb_%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
 			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
 				<maxFileSize>512MB</maxFileSize>
 			</timeBasedFileNamingAndTriggeringPolicy>
@@ -42,14 +42,14 @@
 
 	<!-- FILE.ERROR -->
 	<appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${filePath}/error/shopping_mall.log</file>
+		<file>${filePath}/error/mongodb.log</file>
 		<filter class="ch.qos.logback.classic.filter.LevelFilter">
 			<level>ERROR</level>
 			<onMatch>ACCEPT</onMatch>
 			<onMismatch>DENY</onMismatch>
 		</filter>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>${filePath}/shopping_mall_error_%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+			<fileNamePattern>${filePath}/mongodb_error_%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
 			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
 				<maxFileSize>100MB</maxFileSize>
 			</timeBasedFileNamingAndTriggeringPolicy>
@@ -59,10 +59,6 @@
 			<pattern>%d{yyyy-MM-dd HH:mm:ss} [%-5p] [%F]%M\(%L\) : %m%n</pattern>
 		</encoder>
 	</appender>
-
-	<logger name="org.hibernate.SQL" level="DEBUG" additivity="false"/>
-	<logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE" additivity="false"/>
-	<logger name="org.hibernate.type.descriptor.sql.BasicExtractor" level="TRACE" additivity="false"/>
 
 	<root level="INFO">
 		<appender-ref ref="STDOUT"/>
