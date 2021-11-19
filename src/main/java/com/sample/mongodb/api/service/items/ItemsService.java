@@ -46,16 +46,29 @@ public class ItemsService {
 	}
 
 	@Transactional
-	public void saveItems(ItemsSaveDto dto) {
+	public ItemsResponseDto saveItems(ItemsSaveDto dto) {
 		Items document = dto.toEntity();
 		itemsRepository.save(document);
+		return ItemsResponseDto.builder()
+				.code(document.getCode())
+				.name(document.getName())
+				.description(document.getDescription())
+				.classifies(document.getClassifies())
+				.build();
 	}
 
 	@Transactional
-	public void modifyItems(ItemsModifyDto dto) {
-		Items document = itemsRepository.findItemsByCode(dto.getCode());
+	public ItemsResponseDto modifyItems(ItemsModifyDto dto) {
+		Items document = itemsRepository.findItemsByCode(dto.getCode())
+						.orElseThrow(NoSuchElementException::new);
 		document.update(dto.getName(), dto.getDescription(), dto.getClassifies());
 		itemsRepository.save(document);
+		return ItemsResponseDto.builder()
+				.code(document.getCode())
+				.name(document.getName())
+				.description(document.getDescription())
+				.classifies(document.getClassifies())
+				.build();
 	}
 
 	@Transactional

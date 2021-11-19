@@ -1,8 +1,8 @@
 package com.sample.mongodb.config.exception.handler;
 
+import com.sample.mongodb.common.response.ErrorResponse;
 import com.sample.mongodb.config.exception.BusinessException;
 import com.sample.mongodb.config.exception.model.ErrorCode;
-import com.sample.mongodb.config.exception.model.ErrorResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

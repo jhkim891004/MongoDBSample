@@ -1,5 +1,6 @@
-package com.sample.mongodb.config.exception.model;
+package com.sample.mongodb.common.response;
 
+import com.sample.mongodb.config.exception.model.ErrorCode;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,20 +17,20 @@ public class ErrorResponse {
 	private int status;
 	private String code;
 	private String message;
-	private List<FieldError> errors;
+	private List<FieldError> data;
 
 	private ErrorResponse(final ErrorCode code, final List<FieldError> errors) {
 		this.status = code.getStatus();
 		this.code = code.getCode();
 		this.message = code.getMessage();
-		this.errors = errors;
+		this.data = errors;
 	}
 
 	private ErrorResponse(final ErrorCode code) {
 		this.status = code.getStatus();
 		this.code = code.getCode();
 		this.message = code.getMessage();
-		this.errors = new ArrayList<>();
+		this.data = new ArrayList<>();
 	}
 
 	public static ErrorResponse of(final ErrorCode code, final BindingResult bindingResult) {
