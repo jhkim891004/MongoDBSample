@@ -16,6 +16,6 @@ public class SuccessResponse<T> {
 		this.status = status.getStatus();
 		this.code = status.getCode();
 		this.message = status.getMessage();
-		this.result = result;
+		this.payload = result;
 	}
 }
